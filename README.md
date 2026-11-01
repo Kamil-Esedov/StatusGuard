@@ -77,7 +77,7 @@ scheduler
 Склонируйте репозиторий:
 
 ```bash
-git clone https://github.com/Maestro1749/StatusGuard.git
+git clone https://github.com/Kamil-Esedov/StatusGuard.git
 cd StatusGuard
 ```
 
