@@ -99,10 +99,15 @@ func (s *Scheduler) runOnce(ctx context.Context) {
 
 	var wg sync.WaitGroup
 
+	sem := make(chan struct{}, s.workers)
+
 	for _, target := range targets {
 		wg.Add(1)
 		go func(t monitor.Target) {
 			defer wg.Done()
+			sem <- struct{}{}
+			defer func() { <-sem }()
+
 			s.checkTarget(ctx, t)
 		}(target)
 	}
